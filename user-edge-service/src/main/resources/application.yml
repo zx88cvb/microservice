@@ -1,0 +1,7 @@
+server:
+  port: 8082
+
+thrift:
+  user:
+    ip: 127.0.0.1
+  port: 7911
