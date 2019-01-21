@@ -8,6 +8,7 @@ import org.apache.thrift.server.TServer;
 import org.apache.thrift.transport.TFramedTransport;
 import org.apache.thrift.transport.TNonblockingServerSocket;
 import org.apache.thrift.transport.TTransportException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
@@ -24,7 +25,7 @@ public class ThriftServer {
     @Value("${server.port}")
     private int servicePort;
 
-    @Resource
+    @Autowired
     private UserService.Iface usreService;
 
     /**

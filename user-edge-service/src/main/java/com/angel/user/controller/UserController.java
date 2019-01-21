@@ -1,12 +1,16 @@
 package com.angel.user.controller;
 
 import com.angel.thrift.user.UserInfo;
+import com.angel.user.conf.redis.RedisClient;
+import com.angel.user.dto.UserDTO;
+import com.angel.user.response.LoginResponse;
 import com.angel.user.response.Response;
 import com.angel.user.thrift.ServiceProvider;
 import com.angel.user.utils.MD5Util;
 import com.angel.user.utils.TokenUtil;
 import org.apache.thrift.TException;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +25,9 @@ public class UserController {
 
     @Resource
     private ServiceProvider serviceProvider;
+
+    @Autowired
+    private RedisClient redisClient;
 
     /**
      * 登录
@@ -50,8 +57,11 @@ public class UserController {
         // 生成Token
         String token = TokenUtil.getToken();
 
-        // 缓存用户
+        UserDTO userDTO = new UserDTO().converFor(userInfo);
 
-        return null;
+        // 缓存用户
+        redisClient.set(token, userDTO, 3600);
+
+        return new LoginResponse(token);
     }
 }

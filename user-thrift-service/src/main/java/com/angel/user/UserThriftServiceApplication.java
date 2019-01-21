@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2019/1/15
  */
 @SpringBootApplication
-public class ServiceApplication {
+public class UserThriftServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ServiceApplication.class, args);
+        SpringApplication.run(UserThriftServiceApplication.class, args);
     }
 }
