@@ -1,6 +1,8 @@
 package com.angel.user.thrift;
 
 import com.angel.thrift.user.UserService;
+import com.angel.thrift.user.UserInfo;
+import org.apache.thrift.TException;
 import org.apache.thrift.TProcessor;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.server.TNonblockingServer;
@@ -26,14 +28,17 @@ public class ThriftServer {
     private int servicePort;
 
     @Autowired
-    private UserService.Iface usreService;
+    private UserService.Iface userService;
+
+    /*@Autowired
+    private UserService userService;*/
 
     /**
      * 服务启动仅执行一次  相当于init()
      */
     @PostConstruct
     public void startThriftServer() {
-        TProcessor tProcessor = new UserService.Processor<>(usreService);
+        TProcessor tProcessor = new UserService.Processor<>(userService);
 
         TNonblockingServerSocket socket = null;
         try {
@@ -50,4 +55,5 @@ public class ThriftServer {
 
         server.serve();
     }
+
 }

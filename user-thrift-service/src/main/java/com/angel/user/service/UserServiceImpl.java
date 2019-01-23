@@ -15,20 +15,19 @@ import javax.annotation.Resource;
  * @date 2019/1/15
  */
 @Service
-@Transactional
+
+//@Transactional 会导致thrift read time out 原因不明
 public class UserServiceImpl implements UserService.Iface {
 
     @Resource
     private UserMapper userMapper;
 
     @Override
-    @Transactional(readOnly = true)
     public UserInfo getUserById(int id) throws TException {
         return userMapper.getUserById(id);
     }
 
     @Override
-    @Transactional(readOnly = true)
     public UserInfo getUserByName(String username) throws TException {
         return userMapper.getUserByName(username);
     }

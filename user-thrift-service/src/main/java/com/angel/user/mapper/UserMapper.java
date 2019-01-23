@@ -19,7 +19,7 @@ public interface UserMapper {
      * @param id id
      * @return 返回用户实体
      */
-    @Select("select id, username, password, real_name as realName mobile, email" +
+    @Select("select id, username, password, real_name as realName, mobile, email" +
             " from pe_user where id = #{id}")
     UserInfo getUserById(@Param("id")Integer id);
 
@@ -28,7 +28,7 @@ public interface UserMapper {
      * @param username 用户名
      * @return 返回用户实体
      */
-    @Select("select id, username, password, real_name as realName mobile, email" +
+    @Select("select id, username, password, real_name as realName, mobile, email" +
             " from pe_user where username = #{username}")
     UserInfo getUserByName(@Param("username")String username);
 
