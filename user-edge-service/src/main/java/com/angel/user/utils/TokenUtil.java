@@ -13,7 +13,7 @@ public class TokenUtil {
         return randomCode("0123456789abcdefghijklmnopqrstuvwxyz", 32);
     }
 
-    private static String randomCode(String s, int size) {
+    public static String randomCode(String s, int size) {
         StringBuilder result = new StringBuilder(size);
 
         Random random = new Random();
