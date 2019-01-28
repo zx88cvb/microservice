@@ -49,18 +49,18 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-        <!--spring-boot 支持整合lombok 让代码更简洁-->
+        <!--&lt;!&ndash;spring-boot 支持整合lombok 让代码更简洁&ndash;&gt;
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        &lt;!&ndash; https://mvnrepository.com/artifact/com.google.guava/guava &ndash;&gt;
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>27.0-jre</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
 

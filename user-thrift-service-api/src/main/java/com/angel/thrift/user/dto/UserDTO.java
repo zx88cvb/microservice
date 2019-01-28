@@ -1,11 +1,9 @@
-package com.angel.user.dto;
+package com.angel.thrift.user.dto;
 
 import com.angel.thrift.user.UserInfo;
-import com.angel.user.common.DTOConvert;
 import com.google.common.base.Converter;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
 
@@ -23,7 +21,7 @@ public class UserDTO implements Serializable {
     private String email; // required
     private String mobile;
 
-    public UserInfo converToUser() {
+    /*public UserInfo converToUser() {
         UserInputDTOConvert userInputDTOConvert = new UserInputDTOConvert();
         UserInfo convert = userInputDTOConvert.convert(this);
         return convert;
@@ -36,12 +34,12 @@ public class UserDTO implements Serializable {
     }
 
     private static class UserInputDTOConvert extends Converter<UserDTO, UserInfo> {
-        /*@Override
+        *//*@Override
         public UserInfo convert(UserDTO userDTO) {
             UserInfo userInfo = new UserInfo();
             BeanUtils.copyProperties(userDTO,userInfo);
             return userInfo;
-        }*/
+        }*//*
 
         @Override
         protected UserInfo doForward(UserDTO userDTO) {
@@ -56,5 +54,5 @@ public class UserDTO implements Serializable {
             BeanUtils.copyProperties(userInfo,userDTO);
             return userDTO;
         }
-    }
+    }*/
 }

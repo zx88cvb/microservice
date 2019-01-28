@@ -1,8 +1,8 @@
 package com.angel.user.controller;
 
 import com.angel.thrift.user.UserInfo;
+import com.angel.thrift.user.dto.UserDTO;
 import com.angel.user.conf.redis.RedisClient;
-import com.angel.user.dto.UserDTO;
 import com.angel.user.response.LoginResponse;
 import com.angel.user.response.Response;
 import com.angel.user.thrift.ServiceProvider;
@@ -12,10 +12,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.thrift.TException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -24,6 +22,7 @@ import javax.annotation.Resource;
  * @date 2019/1/16
  */
 @RestController
+@Controller("user")
 public class UserController {
 
     @Resource
@@ -60,7 +59,10 @@ public class UserController {
         // 生成Token
         String token = TokenUtil.getToken();
 
-        UserDTO userDTO = new UserDTO().converFor(userInfo);
+        //UserDTO userDTO = new UserDTO().converFor(userInfo);
+
+        UserDTO userDTO = new UserDTO();
+        BeanUtils.copyProperties(userDTO, userInfo);
 
         // 缓存用户
         redisClient.set(token, userDTO, 3600);
@@ -137,5 +139,15 @@ public class UserController {
             return Response.exception(e);
         }
         return Response.SUCCESS;
+    }
+
+    /**
+     * 根据token获取用户信息
+     * @param token token
+     * @return UserDTO
+     */
+    @PostMapping("/authentication")
+    public UserDTO authentication(@RequestHeader("token")String token) {
+        return redisClient.get(token);
     }
 }

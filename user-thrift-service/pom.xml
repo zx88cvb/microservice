@@ -45,10 +45,10 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!--spring-boot 支持整合lombok 让代码更简洁-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
 
