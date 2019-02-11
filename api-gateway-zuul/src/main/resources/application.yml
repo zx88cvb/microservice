@@ -1,0 +1,12 @@
+server:
+  port: 8080
+zuul:
+  #全部服务忽略敏感头(全部服务都可以传递cookie)
+  sensitive-headers:
+  routes:
+    course:
+      path: /course/**
+      url: http://127.0.0.1:8081/course/
+    user:
+      path: /user/**
+      url: http://127.0.0.1:8082/user/
