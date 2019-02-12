@@ -1,0 +1,4 @@
+FROM python:3.6
+MAINTAINER Angel 295389754@qq.com
+
+RUN pip install thrift==0.10.0
