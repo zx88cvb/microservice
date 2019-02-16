@@ -3,14 +3,14 @@ server:
 
 thrift:
   user:
-    ip: 127.0.0.1
+    ip: user-service
     port: 7911
   message:
-    ip: 127.0.0.1
+    ip: message-service
     port: 9090
 
 spring:
   redis:
-    host: 127.0.0.1
+    host: ${redis.address}
     port: 6379
     timeout: 30000s

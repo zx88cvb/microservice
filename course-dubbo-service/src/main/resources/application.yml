@@ -3,12 +3,12 @@ spring:
     name: course-dubbo-service
   dubbo:
       server: true
-      registry: zookeeper://127.0.0.1:2181
+      registry: zookeeper://${zookeeper.address}:2181
       protocol:
         name: dubbo
         port: 20880
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/db_course?useSSL=false
+    url: jdbc:mysql://${mysql.address}:3306/db_course?useSSL=false
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
@@ -22,5 +22,5 @@ spring:
       connection-timeout: 30000
 thrift:
   user:
-    ip: 127.0.0.1
+    ip: user-service
     port: 7911
