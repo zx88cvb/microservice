@@ -47,7 +47,7 @@ if __name__ == "__main__":
     handler = MessageServiceHandler()
     # handler.sendEmailMessage("295389754@qq.com", "哈哈啊")
     processor = MessageService.Processor(handler)
-    transport = TSocket.TServerSocket('127.0.0.1', 9090)
+    transport = TSocket.TServerSocket(None, 9090)
     tfactory = TTransport.TFramedTransportFactory()
     pfactory = TBinaryProtocol.TBinaryProtocolFactory()
     server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
